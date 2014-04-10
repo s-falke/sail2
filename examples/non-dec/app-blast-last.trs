@@ -1,0 +1,16 @@
+sort List
+[ nil : -> List ]
+[ cons : Int, List -> List ]
+[ app : List, List -> List ]
+[ last : List -> List ]
+[ blast : List -> List ]
+app(nil, YS) -> YS
+app(cons(X, XS), YS) -> cons(X, app(XS, YS))
+last(nil) -> nil
+last(cons(X, nil)) -> cons(X, nil)
+last(cons(X, cons(Y, ZS))) -> last(cons(Y, ZS))
+blast(nil) -> nil
+blast(cons(X, nil)) -> nil
+blast(cons(X, cons(Y, ZS))) -> cons(X, blast(cons(Y, ZS)))
+
+# app(blast(XS), last(XS)) = XS

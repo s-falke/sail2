@@ -1,0 +1,15 @@
+sort Nat
+[ zero : -> Nat ]
+[ s : Nat -> Nat ]
+[ max : Nat, Nat -> Nat ]
+[ min : Nat, Nat -> Nat ]
+max(zero, Y) -> Y
+max(s(X), zero) -> s(X)
+max(s(X), s(Y)) -> s(max(X, Y))
+min(zero, Y) -> zero
+min(s(X), zero) -> zero
+min(s(X), s(Y)) -> s(min(X, Y))
+
+# max(X, X) = X
+# min(X, X) = X
+# min(X, Y) = max(X, Y)

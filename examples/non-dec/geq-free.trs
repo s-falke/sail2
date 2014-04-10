@@ -1,0 +1,15 @@
+sort Nat
+sort Bool
+[ zero : -> Nat ]
+[ s : Nat -> Nat ]
+[ true : -> Bool ]
+[ false : -> Bool ]
+[ p : Nat -> Nat ]
+[ geq : Nat, Nat -> Bool]
+p(zero) -> zero
+p(s(X)) -> X
+geq(X, zero) -> true
+geq(zero, s(Y)) -> false
+geq(s(X), s(Y)) -> geq(X, Y)
+
+# geq(X, p(X)) = true /\ geq(s(X), X) = true

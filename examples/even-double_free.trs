@@ -1,0 +1,15 @@
+sort Nat
+sort Bool
+[ zero : -> Nat ]
+[ s : Nat -> Nat ]
+[ true : -> Bool ]
+[ false : -> Bool ]
+[ even : Nat -> Bool ]
+[ double : Nat -> Nat ]
+even(zero) -> true
+even(s(zero)) -> false
+even(s(s(X))) -> even(X)
+double(zero) -> zero
+double(s(X)) -> s(s(double(X)))
+
+# even(double(X)) = true

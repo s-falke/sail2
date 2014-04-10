@@ -1,0 +1,13 @@
+sort Bool
+[ true : -> Bool ]
+[ false : -> Bool ]
+[ divides : Int, Int -> Bool ]
+divides(X, Y) -> divides(-(X), Y) [ 0 > X /\ Y >= 0 ]
+divides(X, Y) -> divides(X, -(Y)) [ X >= 0 /\ 0 > Y ]
+divides(X, Y) -> divides(-(X), -(Y)) [ 0 > X /\ 0 > Y ]
+divides(X, Y) -> true [ X >= 0 /\ Y = 0 ]
+divides(X, Y) -> false [ X = 0 /\ Y > 0 ]
+divides(X, Y) -> false [ X > 0 /\ Y > 0 /\ X > Y ]
+divides(X, Y) -> divides(X, +(Y, -(X))) [ X > 0 /\ Y > 0 /\ Y >= X ]
+
+# divides(X, X) = true

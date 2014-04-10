@@ -1,0 +1,23 @@
+sort List
+sort Pair
+sort Plist
+sort Nat
+[ nil : -> List ]
+[ cons : Int, List -> List ]
+[ pair : Int, Int -> Pair ]
+[ pnil : -> Plist ]
+[ pcons : Pair, Plist -> Plist ]
+[ zero : -> Nat ]
+[ s : Nat -> Nat ]
+[ len : List -> Nat ]
+[ plen : Plist -> Nat ]
+[ zip : List, List -> Plist ]
+len(nil) -> zero
+len(cons(X, XS)) -> s(len(XS))
+plen(pnil) -> zero
+plen(pcons(X, XS)) -> s(plen(XS))
+zip(XS, nil) -> pnil
+zip(nil, cons(Y, YS)) -> pnil
+zip(cons(X, XS), cons(Y, YS)) -> pcons(pair(X, Y), zip(XS, YS))
+
+# plen(zip(XS, XS)) = len(XS)

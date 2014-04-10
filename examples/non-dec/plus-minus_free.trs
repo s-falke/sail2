@@ -1,0 +1,12 @@
+sort Nat
+[ zero : -> Nat ]
+[ s : Nat -> Nat ]
+[ plus : Nat, Nat -> Nat ]
+[ minus : Nat, Nat -> Nat ]
+plus(X, zero) -> X
+plus(X, s(Y)) -> s(plus(X, Y))
+minus(X, zero) -> X
+minus(zero, s(Y)) -> zero
+minus(s(X), s(Y)) -> minus(X, Y)
+
+# minus(minus(X, Y), Z) = minus(X, plus(Y, Z)) /\ plus(zero, Y) = Y /\ minus(zero, Y) = zero /\ plus(s(X), Y) = s(plus(X, Y))

@@ -1,0 +1,18 @@
+sort List
+sort Pair
+sort Plist
+[ nil : -> List ]
+[ cons : Int, List -> List ]
+[ pair : Int, Int -> Pair ]
+[ pnil : -> Plist ]
+[ pcons : Pair, Plist -> Plist ]
+[ zip : List, List -> Plist ]
+[ fst : Plist -> List ]
+zip(XS, nil) -> pnil
+zip(nil, cons(Y, YS)) -> pnil
+zip(cons(X, XS), cons(Y, YS)) -> pcons(pair(X, Y), zip(XS, YS))
+fst(pnil) -> nil
+fst(pcons(pair(X, Y), ZS)) -> cons(X, fst(ZS))
+
+# fst(zip(XS, XS)) = XS
+# fst(zip(XS, YS)) = XS

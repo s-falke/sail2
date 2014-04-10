@@ -1,0 +1,9 @@
+[ div : Int, Int -> Int ]
+div(X, Y) -> -(div(-(X), Y)) [ 0 > X /\ Y >= 0 ]
+div(X, Y) -> -(div(X, -(Y))) [ X >= 0 /\ 0 > Y ]
+div(X, Y) -> div(-(X), -(Y)) [ 0 > X /\ 0 > Y ]
+div(X, Y) -> 0 [ X >= 0 /\ Y = 0 ]
+div(X, Y) -> 0 [ X >= 0 /\ Y > 0 /\ Y > X ]
+div(X, Y) -> +(div(+(X, -(Y)), Y), 1) [ X >= 0 /\ Y > 0 /\ X >= Y ]
+
+# div(X, X) = 1

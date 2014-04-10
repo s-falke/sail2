@@ -1,0 +1,21 @@
+sort List
+[ nil : -> List ]
+[ cons : Int, List -> List ]
+[ alternate : List, List -> List ]
+[ oddlist : List -> List ]
+[ evenlist : List -> List ]
+alternate(XS, nil) -> nil
+alternate(nil, cons(Y, YS)) -> nil
+alternate(cons(X, XS), cons(Y, YS)) -> cons(X, cons(Y, alternate(XS, YS)))
+oddlist(nil) -> nil
+oddlist(cons(X, nil)) -> cons(X, nil)
+oddlist(cons(X, cons(Y, ZS))) -> cons(X, oddlist(ZS))
+evenlist(nil) -> nil
+evenlist(cons(X, nil)) -> nil
+evenlist(cons(X, cons(Y, ZS))) -> cons(Y, evenlist(ZS))
+
+# oddlist(alternate(XS, XS)) = XS
+# evenlist(alternate(XS, XS)) = XS
+# oddlist(alternate(XS, YS)) = XS
+# evenlist(alternate(XS, YS)) = YS
+# evenlist(alternate(XS, XS)) = oddlist(alternate(XS, XS))

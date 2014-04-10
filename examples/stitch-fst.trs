@@ -1,0 +1,22 @@
+sort List
+sort Pair
+sort Plist
+[ nil : -> List ]
+[ cons : Int, List -> List ]
+[ pair : Int, Int -> Pair ]
+[ pnil : -> Plist ]
+[ pcons : Pair, Plist -> Plist ]
+[ stitch : List, List -> Plist ]
+[ stitch' : List, List -> Plist ]
+[ fst : Plist -> List ]
+stitch(XS, nil) -> pnil
+stitch(nil, cons(Y, YS)) -> pnil
+stitch(cons(X, XS), cons(Y, YS)) -> pcons(pair(X, Y), stitch'(XS, YS))
+stitch'(XS, nil) -> pnil
+stitch'(nil, cons(Y, YS)) -> pnil
+stitch'(cons(X, XS), cons(Y, YS)) -> pcons(pair(Y, X), stitch(XS, YS))
+fst(pnil) -> nil
+fst(pcons(pair(X, Y), ZS)) -> cons(X, fst(ZS))
+
+# fst(stitch(XS, XS)) = XS /\ fst(stitch'(XS, XS)) = XS
+# fst(stitch(XS, YS)) = XS /\ fst(stitch'(XS, YS)) = XS

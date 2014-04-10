@@ -1,0 +1,16 @@
+sort List
+sort Nat
+[ nil : -> List ]
+[ cons : Nat, List -> List ]
+[ zero : -> Nat ]
+[ s : Nat -> Nat ]
+[ max : Nat, Nat -> Nat ]
+[ maxlist : List, List -> List ]
+max(zero, Y) -> Y
+max(s(X), zero) -> s(X)
+max(s(X), s(Y)) -> s(max(X, Y))
+maxlist(XS, nil) -> nil
+maxlist(nil, cons(Y, YS)) -> nil
+maxlist(cons(X, XS), cons(Y, YS)) -> cons(max(X, Y), maxlist(XS, YS))
+
+# maxlist(XS, XS) = XS /\ max(X, X) = X

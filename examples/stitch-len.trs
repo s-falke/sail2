@@ -1,0 +1,27 @@
+sort List
+sort Pair
+sort Plist
+sort Nat
+[ nil : -> List ]
+[ cons : Int, List -> List ]
+[ pair : Int, Int -> Pair ]
+[ pnil : -> Plist ]
+[ pcons : Pair, Plist -> Plist ]
+[ zero : -> Nat ]
+[ s : Nat -> Nat ]
+[ len : List -> Nat ]
+[ plen : Plist -> Nat ]
+[ stitch1 : List, List -> Plist ]
+[ stitch2 : List, List -> Plist ]
+len(nil) -> zero
+len(cons(X, XS)) -> s(len(XS))
+plen(pnil) -> zero
+plen(pcons(X, XS)) -> s(plen(XS))
+stitch1(XS, nil) -> pnil
+stitch1(nil, cons(Y, YS)) -> pnil
+stitch1(cons(X, XS), cons(Y, YS)) -> pcons(pair(X, Y), stitch2(XS, YS))
+stitch2(XS, nil) -> pnil
+stitch2(nil, cons(Y, YS)) -> pnil
+stitch2(cons(X, XS), cons(Y, YS)) -> pcons(pair(Y, X), stitch1(XS, YS))
+
+# plen(stitch1(XS, XS)) = len(XS) /\ plen(stitch2(XS, XS)) = len(XS)

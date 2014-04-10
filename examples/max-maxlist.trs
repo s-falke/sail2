@@ -1,0 +1,12 @@
+sort List
+[ nil : -> List ]
+[ cons : Int, List -> List ]
+[ max : Int, Int -> Int ]
+[ maxlist : List, List -> List ]
+max(X, Y) -> X [ X >= Y ]
+max(X, Y) -> Y [ Y > X ]
+maxlist(XS, nil) -> nil
+maxlist(nil, cons(Y, YS)) -> nil
+maxlist(cons(X, XS), cons(Y, YS)) -> cons(max(X, Y), maxlist(XS, YS))
+
+# maxlist(XS, XS) = XS /\ max(X, X) = X

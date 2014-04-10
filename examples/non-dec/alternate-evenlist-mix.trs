@@ -1,0 +1,21 @@
+sort List
+[ nil : -> List ]
+[ cons : Int, List -> List ]
+[ alternate : List, List -> List ]
+[ evenlist : List -> List ]
+[ mix : List, List -> List ]
+[ mix' : List, List -> List ]
+alternate(XS, nil) -> nil
+alternate(nil, cons(Y, YS)) -> nil
+alternate(cons(X, XS), cons(Y, YS)) -> cons(X, cons(Y, alternate(XS, YS)))
+evenlist(nil) -> nil
+evenlist(cons(X, nil)) -> nil
+evenlist(cons(X, cons(Y, ZS))) -> cons(Y, evenlist(ZS))
+mix(X, nil) -> nil
+mix(nil, cons(Y, YS)) -> nil
+mix(cons(X, XS), cons(Y, YS)) -> cons(X, mix'(XS, YS))
+mix'(X, nil) -> nil
+mix'(nil, cons(Y, YS)) -> nil
+mix'(cons(X, XS), cons(Y, YS)) -> cons(Y, mix(XS, YS))
+
+# evenlist(alternate(mix(XS, XS), mix(XS, XS))) = XS /\ evenlist(alternate(mix'(XS, XS), mix'(XS, XS))) = XS 

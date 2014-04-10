@@ -1,0 +1,10 @@
+sort List
+[ nil : -> List ]
+[ cons : Int, List -> List ]
+[ maxlist : List, List -> List ]
+maxlist(XS, nil) -> nil
+maxlist(nil, cons(Y, YS)) -> nil
+maxlist(cons(X, XS), cons(Y, YS)) -> cons(X, maxlist(XS, YS)) [ X >= Y ]
+maxlist(cons(X, XS), cons(Y, YS)) -> cons(Y, maxlist(XS, YS)) [ Y > X ]
+
+# maxlist(XS, XS) = XS

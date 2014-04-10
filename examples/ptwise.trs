@@ -1,0 +1,14 @@
+sort Bool
+sort List
+[ true : -> Bool ]
+[ false : -> Bool ]
+[ nil : -> List ]
+[ cons : Int, List -> List ]
+[ ptwise : List, List -> Bool ]
+ptwise(nil, nil) -> true
+ptwise(nil, cons(Y, YS)) -> false
+ptwise(cons(X, XS), nil) -> false
+ptwise(cons(X, XS), cons(Y, YS)) -> ptwise(XS, YS) [ X >= Y ]
+ptwise(cons(X, XS), cons(Y, YS)) -> false [ Y > X ]
+
+# ptwise(XS, XS) = true

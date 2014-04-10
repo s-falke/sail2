@@ -1,0 +1,11 @@
+sort List
+[ nil : -> List ]
+[ cons : Int, List -> List ]
+[ prefix : List, List -> List ]
+prefix(nil, YS) -> nil
+prefix(cons(X, XS), nil) -> nil
+prefix(cons(X, XS), cons(Y, YS)) -> cons(X, prefix(XS, YS)) [ X = Y ]
+prefix(cons(X, XS), cons(Y, YS)) -> prefix(cons(X, XS), YS) [ X > Y ]
+prefix(cons(X, XS), cons(Y, YS)) -> prefix(cons(X, XS), YS) [ Y > X ]
+
+# prefix(XS, XS) = XS

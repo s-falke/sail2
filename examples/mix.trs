@@ -1,0 +1,13 @@
+sort List
+[ nil : -> List ]
+[ cons : Int, List -> List ]
+[ mix : List, List -> List ]
+[ mix' : List, List -> List ]
+mix(X, nil) -> nil
+mix(nil, cons(Y, YS)) -> nil
+mix(cons(X, XS), cons(Y, YS)) -> cons(X, mix'(XS, YS))
+mix'(X, nil) -> nil
+mix'(nil, cons(Y, YS)) -> nil
+mix'(cons(X, XS), cons(Y, YS)) -> cons(Y, mix(XS, YS))
+
+# mix(XS, XS) = XS /\ mix'(XS, XS) = XS

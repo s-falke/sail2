@@ -1,0 +1,18 @@
+sort Pair
+sort Pairlist
+sort Intlist
+[ pair : Int, Int -> Pair ]
+[ pnil : -> Pairlist ]
+[ pcons : Pair, Pairlist -> Pairlist ]
+[ nil : -> Intlist ]
+[ cons : Int, Intlist -> Intlist ]
+[ maxpair : Pairlist -> Intlist ]
+[ zip : Intlist, Intlist -> Pairlist ]
+maxpair(pnil) -> nil
+maxpair(pcons(pair(X, Y), ZS)) -> cons(X, maxpair(ZS)) [ X >= Y ]
+maxpair(pcons(pair(X, Y), ZS)) -> cons(Y, maxpair(ZS)) [ Y > X ]
+zip(XS, nil) -> pnil
+zip(nil, cons(Y, YS)) -> pnil
+zip(cons(X, XS), cons(Y, YS)) -> pcons(pair(X, Y), zip(XS, YS))
+
+# maxpair(zip(XS, XS)) = XS

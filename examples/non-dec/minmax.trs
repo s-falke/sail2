@@ -1,0 +1,7 @@
+sort Pair
+[ pair : Int, Int -> Pair ]
+[ minmax : Int, Int -> Pair ]
+minmax(X, Y) -> pair(X, Y) [ Y >= X ]
+minmax(X, Y) -> pair(Y, X) [ X > Y ]
+
+# minmax(X, Y) = pair(Y, X) [ X >= Y ]

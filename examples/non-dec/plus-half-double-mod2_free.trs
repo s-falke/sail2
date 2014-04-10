@@ -1,0 +1,20 @@
+sort Nat
+[ zero : -> Nat ]
+[ s : Nat -> Nat ]
+[ plus : Nat, Nat -> Nat ]
+[ half : Nat -> Nat ]
+[ mod2 : Nat -> Nat ]
+[ double : Nat -> Nat ]
+plus(zero, Y) -> Y
+plus(s(X), Y) -> s(plus(X, Y))
+half(zero) -> zero
+half(s(zero)) -> zero
+half(s(s(X))) -> s(half(X))
+mod2(zero) -> zero
+mod2(s(zero)) -> s(zero)
+mod2(s(s(X))) -> mod2(X)
+double(zero) -> zero
+double(s(X)) -> s(s(double(X)))
+
+# plus(mod2(X), plus(half(X), half(X))) = X /\ plus(X, s(Y)) = s(plus(X, Y))
+# plus(mod2(X), double(half(X))) = X /\ plus(X, s(Y)) = s(plus(X, Y))

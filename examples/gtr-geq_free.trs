@@ -1,0 +1,22 @@
+sort Nat
+sort Bool
+[ zero : -> Nat ]
+[ s : Nat -> Nat ]
+[ true : -> Bool ]
+[ false : -> Bool ]
+[ gtr : Nat, Nat -> Bool ]
+[ geq : Nat, Nat -> Bool ]
+[ not : Bool -> Bool ]
+gtr(zero, Y) -> false
+gtr(s(X), zero) -> true
+gtr(s(X), s(Y)) -> gtr(X, Y)
+geq(X, zero) -> true
+geq(zero, s(Y)) -> false
+geq(s(X), s(Y)) -> geq(X, Y)
+not(true) -> false
+not(false) -> true
+
+# gtr(X, X) = false
+# geq(X, X)= true
+# not(gtr(X, X)) = true
+# not(geq(X, X)) = false

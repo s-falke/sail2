@@ -1,0 +1,13 @@
+[ gcd : Int, Int -> Int ]
+gcd(A, B) -> gcd(-(A), B) [ 0 > A /\ B >= 0 ]
+gcd(A, B) -> gcd(A, -(B)) [ A >= 0 /\ 0 > B ]
+gcd(A, B) -> gcd(-(A), -(B)) [ 0 > A /\ 0 > B ]
+gcd(A, B) -> B [ A = 0 /\ B >= 0 ]
+gcd(A, B) -> A [ A > 0 /\ B = 0 ]
+gcd(A, B) -> gcd(+(A, -(B)), B) [ A > 0 /\ B > 0 /\ A >= B ]
+gcd(A, B) -> gcd(A, +(B, -(A))) [ A > 0 /\ B > 0 /\ B > A ]
+
+# gcd(X, Y) = 1 [ Y = 1 ]
+# gcd(X, Y) = 1 [ Y = -(1) ] /\ gcd(X, Y) = 1 [ Y = 1 ]
+# gcd(X, X) = X [ X >= 0 ]
+# gcd(X, X) = -(X) [ 0 >= X ]

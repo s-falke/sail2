@@ -1,0 +1,13 @@
+sort Nat
+sort Bool
+[ zero : -> Nat ]
+[ s : Nat -> Nat ]
+[ half : Nat -> Nat ]
+[ double : Nat -> Nat ]
+half(zero) -> zero
+half(s(zero)) -> zero
+half(s(s(X))) -> s(half(X))
+double(zero) -> zero
+double(s(X)) -> s(s(double(X)))
+
+# half(double(X)) = X

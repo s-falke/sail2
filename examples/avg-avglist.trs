@@ -1,0 +1,14 @@
+sort Intlist
+[ nil : -> Intlist ]
+[ cons : Int, Intlist -> Intlist ]
+[ avg : Int, Int -> Int ]
+[ avglist : Intlist, Intlist -> Intlist]
+avg(X, Y) -> avg(Y, X) [ X > Y ]
+avg(X, Y) -> X [ Y >= X /\ 1 >= +(Y, -(X)) ]
+avg(X, Y) -> avg(+(X, 1), +(Y, -(1))) [ Y >= X /\ +(Y, -(X)) > 1 ]
+avglist(XS, nil) -> nil
+avglist(nil, cons(Y, YS)) -> nil
+avglist(cons(X, XS), cons(Y, YS)) -> cons(avg(X, Y), avglist(XS, YS))
+
+# avg(X, X) = X
+# avg(X, X) = X /\ avglist(XS, XS) = XS

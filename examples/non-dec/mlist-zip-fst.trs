@@ -1,0 +1,22 @@
+sort Pair
+sort Intlist
+sort Pairlist
+[ pair : Int, Int -> Pair ]
+[ nil : -> Intlist ]
+[ cons : Int, Intlist -> Intlist ]
+[ pnil : -> Pairlist ]
+[ pcons : Pair, Pairlist -> Pairlist ]
+[ mlist : Intlist, Intlist -> Intlist ]
+[ zip : Intlist, Intlist -> Pairlist ]
+[ fst : Pairlist -> Intlist ]
+mlist(XS, nil) -> nil
+mlist(nil, cons(XY, YS)) -> nil
+mlist(cons(X, XS), cons(Y, YS)) -> cons(X, mlist(XS, YS)) [ X >= Y ]
+mlist(cons(X, XS), cons(Y, YS)) -> cons(Y, mlist(XS, YS)) [ Y > X ]
+zip(XS, nil) -> pnil
+zip(nil, cons(Y, YS)) -> pnil
+zip(cons(X, XS), cons(Y, YS)) -> pcons(pair(X, Y), zip(XS, YS))
+fst(pnil) -> nil
+fst(pcons(pair(X, Y), ZS)) -> cons(X, fst(ZS))
+
+# fst(zip(XS, XS)) = mlist(XS, XS)

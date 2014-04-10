@@ -1,0 +1,18 @@
+sort List
+sort Nat
+[ nil : -> List ]
+[ cons : Int, List -> List ]
+[ zero : -> Nat ]
+[ s : Nat -> Nat ]
+[ len : List -> Nat ]
+[ double : Nat -> Nat ]
+[ alternate : List, List -> List ]
+len(nil) -> zero
+len(cons(X, XS)) -> s(len(XS))
+double(zero) -> zero
+double(s(X)) -> s(s(double(X)))
+alternate(XS, nil) -> nil
+alternate(nil, cons(Y, YS)) -> nil
+alternate(cons(X, XS), cons(Y, YS)) -> cons(X, cons(Y, alternate(XS, YS)))
+
+# len(alternate(XS, XS)) = double(len(XS))

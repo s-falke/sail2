@@ -1,0 +1,9 @@
+sort Nat
+[ zero : -> Nat ]
+[ s : Nat -> Nat ]
+[ minus : Nat, Nat -> Nat ]
+minus(X, zero) -> X
+minus(zero, s(Y)) -> zero
+minus(s(X), s(Y)) -> minus(X, Y)
+
+# minus(X, X) = zero

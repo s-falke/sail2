@@ -1,0 +1,11 @@
+Requirements:
+-------------
+  OCaml (reasonably recent version; I use version 4.01.0)
+  For the GUI: LablGtk2 (reasonably recent version; I use version 2.18.0)
+  AProVE 2014 Command-Line Version (http://aprove.informatik.rwth-aachen.de/)
+  The following SMT-solvers: yices, cvc3
+
+Build instructions:
+-------------------
+  "make gui" builds the GUI "gui.native"
+  "make cli" builds the CLI "cli.native"

@@ -1,0 +1,17 @@
+sort Nat
+sort Bool
+[ zero : -> Nat ]
+[ s : Nat -> Nat ]
+[ true : -> Bool ]
+[ false : -> Bool ]
+[ even : Nat -> Bool ]
+[ odd : Nat -> Bool ]
+[ not : Bool -> Bool ]
+even(zero) -> true
+even(s(X)) -> odd(X)
+odd(zero) -> false
+odd(s(X)) -> even(X)
+not(true) -> false
+not(false) -> true
+
+# not(even(X)) = odd(X) /\ not(odd(X)) = even(X)
