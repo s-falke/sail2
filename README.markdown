@@ -1,6 +1,6 @@
 # Sail2
 
-KITTeL is an automatic inductive theorem prover for term rewrite
+Sail2 is an automatic inductive theorem prover for term rewrite
 systems with built-in linear integer arithmetic.
 
 ## Author
