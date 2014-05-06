@@ -125,10 +125,14 @@ let formulaname = ref ""
 
 let rec speclist =
   [
-    ("-trs", Arg.Set_string trsname, "- Set the TRS");
+    ("-trs", Arg.Set_string trsname, "    - Set the TRS");
+    ("--trs", Arg.Set_string trsname, "");
     ("-formula", Arg.Set_string formulaname, "- Specify the formula");
-    ("-help", Arg.Unit (fun () -> print_usage (); exit 1), "- Display this list of options");
-    ("--help", Arg.Unit (fun () -> print_usage (); exit 1), "")
+    ("--formula", Arg.Set_string formulaname, "");
+    ("-help", Arg.Unit (fun () -> print_usage (); exit 1), "   - Display this list of options");
+    ("--help", Arg.Unit (fun () -> print_usage (); exit 1), "");
+    ("-version", Arg.Unit (fun () -> Printf.printf "Sail2\nCopyright 2009-2014 Stephan Falke\nVersion %s\n" Git_sha1.git_sha1; exit 1), "- Display the version of this program");
+    ("--version", Arg.Unit (fun () -> Printf.printf "Sail2\nCopyright 2009-2014 Stephan Falke\nVersion %s\n" Git_sha1.git_sha1; exit 1), "")
   ]
 and print_usage () =
   Arg.usage speclist usage

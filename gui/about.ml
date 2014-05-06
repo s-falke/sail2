@@ -38,7 +38,7 @@ let about () =
 
   let button = GButton.button ~stock:`OK () in
 
-  let label = GMisc.label ~text:"Version 2.0\nDeveloped by Stephan Falke" () in
+  let label = GMisc.label ~text:("Copyright 2009-2014 Stephan Falke\nVersion " ^ Git_sha1.git_sha1) () in
 
   dialog#misc#realize ();
   table#attach ~left:0 ~top:0 (icon dialog);

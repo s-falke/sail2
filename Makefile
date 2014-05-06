@@ -2,16 +2,16 @@ default: gui
 
 all: gui cli
 
-gui: force_look
+gui: make_git_sha1 force_look
 	ocamlbuild -cflags -I,+lablgtk2 -lflags -I,+lablgtk2,lablgtk.cmxa,gtkInit.cmx -libs unix gui.native
 
-gui.d.byte: force_look
+gui.d.byte: make_git_sha1 force_look
 	ocamlbuild -cflags -I,+lablgtk2 -lflags -I,+lablgtk2,lablgtk.cma,gtkInit.cmo -libs unix gui.d.byte
 
-cli: force_look
+cli: make_git_sha1 force_look
 	ocamlbuild -libs unix cli.native
 
-cli.d.byte: force_look
+cli.d.byte: make_git_sha1 force_look
 	ocamlbuild -libs unix cli.d.byte
 
 doc: force_look
@@ -19,6 +19,9 @@ doc: force_look
 
 clean: force_look
 	ocamlbuild -clean
+
+make_git_sha1: force_look
+	./make_git_sha1.sh git_sha1.ml
 
 force_look:
 	@true
