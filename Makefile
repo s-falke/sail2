@@ -19,6 +19,7 @@ doc: force_look
 
 clean: force_look
 	ocamlbuild -clean
+	rm -f git_sha1.ml
 
 make_git_sha1: force_look
 	./make_git_sha1.sh git_sha1.ml
